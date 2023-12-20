@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body style="max-width: 1200px; margin: auto">
+<h1>Конспект 12 лекция </h1>
+
+<h1 class="post-title entry-title" itemprop="headline">Плавна трансформація CSS властивість transition -- transform</h1>
+
+<div class="post-body entry-content" id="post-body-5568973815447591927" itemprop="articleBody">
+    <p><a href="http://shpargalkablog.ru/2012/02/psevdoklassy-css.html">Псевдоклас :hover</a> дозволяє елементам бути
+        менш статичними, змінюючи їх властивості при наведенні мишки.
+        <style>
+            .blok {
+                background: #808991;
+                color: #FFF;
+                margin: 0 auto;
+                padding: 10px;
+                text-align: center;
+                max-width: 500px;
+                font-size: 20px;
+                border: 4px ridge black;
+                cursor: pointer;
+            }
+
+            .blok:hover {
+                background: #D0D941;
+                color: #000;
+            }
+
+            .dtdemo {
+                max-width: 400px;
+                margin: 0 auto;
+                padding: 5px 10px;
+                border: 4px solid #456;
+            }
+
+            .dtdemo div {
+                overflow: hidden;
+                width: 22%;
+                height: 30px;
+                line-height: 30px;
+                margin: 5px 0;
+                border: 4px solid #ABC;
+                text-align: center;
+            }
+
+            .dtdemo:hover div {
+                width: calc(100% - 4px * 2);
+                background: #000;
+                color: #F00;
+            }
+
+            .timingfunction div {
+                transition-duration: 5s;
+            }
+
+            #ease {
+                transition-timing-function: ease;
+            }
+
+            #easein {
+                transition-timing-function: ease-in;
+            }
+
+            #easeout {
+                transition-timing-function: ease-out;
+            }
+
+            #easeinout {
+                transition-timing-function: ease-in-out;
+            }
+
+            #linear {
+                transition-timing-function: linear;
+            }
+        </style>
+    </p>
+    <div class="blok">при наведенні мишки</div>
+    <pre>&lt;style&gt;
+.blok {
+  background: #808991;
+  color: #FFF;
+  cursor: pointer;
+}
+.blok:hover {
+  background: #D0D941;
+  color: #000;
+}
+&lt;/style&gt;
+
+&lt;div class="blok"&gt;при наведении мышки&lt;/div&gt;</pre>
+    <p>Завдяки властивості <b class="vydelit">transition</b> (<a
+            href="http://www.w3.org/TR/css3-transitions/">w3.org</a>) можна зробити плавний перехід між станами
+        елемента.
+        <style>
+            .transition {
+                transition: 3s;
+            }
+
+            .transition1 {
+                transition: background-color 3s cubic-bezier(0.1, 0.8, 0.5, 2), color 3s 1s linear;
+            }
+
+            .transition2:hover {
+                transition: 3s;
+            }
+
+            .transition3:not(:hover) {
+                transition: 3s;
+            }
+
+            .transition4 {
+                transition: 0s 9999999s;
+            }
+
+            .transition4:hover {
+                transition: 3s;
+            }
+        </style>
+    </p>
+    <div class="blok transition">плавна зміна кольору туди-назад</div>
+    <pre>&lt;style&gt;
+.transition {
+  transition: 3s;
+}
+&lt;/style&gt;
+
+&lt;div class="blok transition"&gt;плавна зміна кольору туди-назад&lt;/div&gt;</pre>
+
+    <div class="blok transition2">плавна зміна при наведенні на div</div>
+    <pre>&lt;style&gt;
+.transition2:hover {
+  transition: 3s;
+}
+&lt;/style&gt;
+
+&lt;div class="blok transition2"&gt;плавна зміна при наведенні на div&lt;/div&gt;</pre>
+
+    <div class="blok transition3">плавна зміна, коли курсор виведений за межі div</div>
+    <pre>&lt;style&gt;
+.transition3:not(:hover) {
+  transition: 3s;
+}
+&lt;/style&gt;
+
+&lt;div class="blok transition3"&gt;плавна зміна, коли курсор виведений за межі div&lt;/div&gt;</pre>
+
+    <div class="blok transition4">збереження становища :hover</div>
+    <pre>&lt;style&gt;
+.transition4 {
+  transition: 0s 9999999s;
+}
+.transition4:hover {
+  transition: 3s;
+}
+&lt;/style&gt;
+
+&lt;div class="blok transition4"&gt;збереження становища :hover&lt;/div&gt;</pre>
+
+    <table border="1" cellpadding="10">
+        <thead style="text-align: center;">
+        <tr>
+            <th>Властивість
+            </th>
+            <th>Опис
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>transition-property
+            </td>
+            <td>властивість [<a href="http://www.w3.org/TR/css3-transitions/#animatable-css">список можливих</a>], на
+                яке поширюється трансформація. При необхідності на кілька властивостей, вони перераховуються через кому.
+                <ul>
+                    <li><strong>all</strong> — Усе</li>
+                    <li><strong>none</strong> — ніхто</li>
+                </ul>
+                <div class="dtdemo timingfunction">
+                    <div style="transition-property: all;">all</div>
+                    <div style="transition-property: width, background;">width, background</div>
+                    <div style="transition-property: width;">width</div>
+                    <div style="transition-property: none;">none</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>transition-duration
+            </td>
+            <td>час, протягом якого відбувається трансформація.
+                <div class="dtdemo">
+                    <div style="transition-duration: 0s;">0s</div>
+                    <div style="transition-duration: .5s;">0.5s</div>
+                    <div style="transition-duration: 1s;">1s</div>
+                    <div style="transition-duration: 5s;">5s</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>transition-delay
+            </td>
+            <td>час, після якого відбувається трансформація.
+                <div class="dtdemo timingfunction">
+                    <div style="transition-delay: 0s;">0s</div>
+                    <div style="transition-delay: .5s;">0.5s</div>
+                    <div style="transition-delay: 1s;">1s</div>
+                    <div style="transition-delay: 5s;">5s</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td id="timing">transition-timing-function
+            </td>
+            <td>вказує, як повинні змінюватися проміжні значення в кривій часу. Наприклад, починати розвиватись
+                повільно, а потім прискорюватися. Трансформація може відбуватися і плавно протягом усієї ділянки часу
+                [cubic-bezier], і ривками в задану кількість кроків [steps].<br>
+                <a href="http://cubic-bezier.com/"><img alt=""
+                                                        src="https://developer.mozilla.org/@api/deki/files/5226/=transition-timing-function.png"></a>
+                <ul>
+                    <li><strong>ease</strong>, он же <code>cubic-bezier(0.25, 0.1, 0.25, 1.0)</code></li>
+                    <li><strong>linear</strong>, он же <code>cubic-bezier(0.0, 0.0, 1.0, 1.0)</code></li>
+                    <li><strong>ease-in</strong>, он же <code>cubic-bezier(0.42, 0, 1.0, 1.0)</code></li>
+                    <li><strong>ease-out</strong>, он же <code>cubic-bezier(0, 0, 0.58, 1.0)</code></li>
+                    <li><strong>ease-in-out</strong>, он же <code>cubic-bezier(0.42, 0, 0.58, 1.0)</code></li>
+                    <li><strong>step-start</strong>, он же <code>steps(1, start)</code></li>
+                    <li><strong>step-end</strong>, он же <code>steps(1, end)</code>, он же <code>steps(1)</code></li>
+                </ul>
+                <div class="dtdemo timingfunction">
+                    <div id="ease">ease</div>
+                    <div id="linear">linear</div>
+                    <div id="easein">ease-in</div>
+                    <div id="easeout">ease-out</div>
+                    <div id="easeinout">ease-in-out</div>
+                    <div style="transition-timing-function: cubic-bezier(.1, .9, .9, 1.5);">cubic-bezier(.1, .9, .9,
+                        1.5)
+                    </div>
+                    <div style="transition-timing-function: cubic-bezier(.1, .9, .9, .1);">cubic-bezier(.1, .9, .9,
+                        .1)
+                    </div>
+                    <div style="transition-timing-function: cubic-bezier(.1, .9, .9, -1.5);">cubic-bezier(.1, .9, .9,
+                        -1.5)
+                    </div>
+                    <div style="transition-timing-function: cubic-bezier(.1, -1.5, .1, 2.5);">cubic-bezier(.1, -1.5, .1,
+                        2.5)
+                    </div>
+                    <div style="transition-timing-function: step-start;">step-start</div>
+                    <div style="transition-timing-function: step-end;">step-end</div>
+                    <div style="transition-timing-function: steps(4, end);">steps(4, end)</div>
+                    <div style="transition-timing-function: steps(4);">steps(4)</div>
+                    <div style="transition-timing-function: steps(4, start);">steps(4, start)</div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+
+    <div class="blok transition1">плавна зміна кольору CSS</div>
+    <pre>&lt;style&gt;
+.transition1 {
+  transition: background-color 3s cubic-bezier(0.1, 0.8, 0.5, 2), color 3s 1s linear;
+
+  <i class="kod-comments">/* або */</i>
+
+  transition-property: background-color, color;
+  transition-duration: 3s;
+  transition-delay: 0s, 1s;
+  transition-timing-function: cubic-bezier(0.1, 0.8, 0.5, 2), linear;
+}
+&lt;/style&gt;
+
+&lt;div class="blok transition1"&gt;плавна зміна кольору CSS&lt;/div&gt;
+</pre>
+
+    <h2>Популярні поєднання transition з іншими властивостями, наприклад, opacity або transform</h2>
+    <style contenteditable="" style="display: none;"></style>
+    <div class="transition-width">зміна ширини width</div>
+    <pre><style class="style" contenteditable="">
+.transition-width {
+    background: #808991;
+    color: #FFF;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    max-width: 500px;
+    font-size: 20px;
+    border: 4px ridge black;
+    cursor: pointer;
+    transition: 3s linear;
+}
+
+.transition-width:hover {
+    max-width: 400px;
+}
+</style>
+
+&lt;div class="transition-width"&gt;зміна ширини width&lt;/div&gt;</pre>
+
+    <div class="transition-opacity">зміна прозорості opacity</div>
+    <pre><style class="style" contenteditable="">
+.transition-opacity {
+    background: #808991;
+    color: #FFF;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    max-width: 500px;
+    font-size: 20px;
+    border: 4px ridge black;
+    cursor: pointer;
+    transition: 3s linear;
+}
+
+.transition-opacity:hover {
+    opacity: .1;
+}
+</style>
+
+&lt;div class="transition-opacity"&gt;зміна прозорості <a href="http://shpargalkablog.ru/2013/02/opacity-css.html">opacity</a>&lt;/div&gt;</pre>
+
+    <div class="transition-rotate">крутіння CSS</div>
+    <pre><style class="style" contenteditable="">
+.transition-rotate {
+    position: relative;
+    z-index: 2;
+    background: #808991;
+    color: #FFF;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    max-width: 500px;
+    font-size: 20px;
+    border: 4px ridge black;
+    cursor: pointer;
+    transition: 3s linear;
+}
+
+.transition-rotate:hover {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+</style>
+
+&lt;div class="transition-rotate"&gt;кручення <a href="http://shpargalkablog.ru/2011/03/css-povorot.html">transform: rotate(360deg);</a>&lt;/div&gt;</pre>
+
+    <div class="transition-scale">збільшують об'єкт CSS</div>
+    <pre><style class="style" contenteditable="">
+.transition-scale {
+    position: relative;
+    z-index: 2;
+    background: #808991;
+    color: #FFF;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    max-width: 500px;
+    font-size: 20px;
+    border: 4px ridge black;
+    cursor: pointer;
+    transition: 3s linear;
+}
+
+.transition-scale:hover {
+    -webkit-transform: scale(2);
+    transform: scale(2);
+}
+</style>
+
+&lt;div class="transition-scale"&gt;збільшували об'єкти вдвічі <a
+                href="http://shpargalkablog.ru/2011/09/transform-css.html">transform: scale(2);</a>&lt;/div&gt;</pre>
+
+    <div class="transition-translate">зміщення вниз CSS</div>
+    <pre><style class="style" contenteditable="">
+.transition-translate {
+    position: relative;
+    top: 0;
+    z-index: 2;
+    background: #808991;
+    color: #FFF;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    max-width: 500px;
+    font-size: 20px;
+    border: 4px ridge black;
+    cursor: pointer;
+    transition: 3s linear;
+}
+
+.transition-translate:hover {
+    top: 50px;
+}
+</style>
+   </pre>
+</div>
+
+
+
+
+
+</body>
+</html>
