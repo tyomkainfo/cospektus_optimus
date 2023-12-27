@@ -496,5 +496,161 @@
     <li>padding-top: 10px; padding-right: 20px; padding-bottom: 15px; padding-left: 25px;</li>
 </ol>
 <hr>
+<h1 style="color: red">Float. Шрифти. Псевдоелементи. Псевдокласи.</h1>
+<p>1 Як виглядає синтаксис для використання псевдоелементу в CSS?</p>
+<ol>
+    <li>selector:pseudo-element { property: value; }</li>
+    <li style="color: green">selector::pseudo-element { property: value; }</li>
+    <li>selector-pseudo-element { property: value; }</li>
+    <li>selector pseudo-element { property: value; }</li>
+</ol>
+<hr>
+<p>2 Як виглядає синтаксис для використання псевдоелементу ::before для вставки додаткового вмісту перед основним змістом елемента?</p>
+<ol>
+    <li>selector::before { content: 'I'm before'; }</li>
+    <li style="color: green">selector::before { content: "I'm before"; }</li>
+    <li>selector::before { content: 'I'm before'; color: red; }</li>
+    <li>selector::before { content: "I'm before"; color: red; }</li>
+</ol>
+<hr>
+<p>3 Який псевдоклас використовується для обрання активного посилання при натисканні на нього мишкою?</p>
+<ol>
+    <li> :checked</li>
+    <li style="color: green"> :active</li>
+    <li> :focus</li>
+    <li> :link</li>
+</ol>
+<hr>
+<p>4 Як можна використовувати псевдоклас :lang для стилізації елементів в залежності від мови тексту?</p>
+<ol>
+    <li>:lang(en) > p { color: blue; }</li>
+    <li>:lang(fr) > q { quotes: "« " " »"; }</li>
+    <li>:lang(de) > q { quotes: "»" "«" "\2039" "\203A"; }</li>
+    <li style="color: green">Усі відповіді вірні.</li>
+</ol>
+<hr>
+<p>6 Яким чином застосовується псевдоклас :first-child до селектора в CSS?</p>
+<ol>
+    <li style="color: green">.container p:first-child { color: blue; }</li>
+    <li>p:first-child { color: blue; }</li>
+    <li>p > :first-child { color: blue; }</li>
+    <li>.container:first-child p { color: blue; }</li>
+</ol>
+<hr>
+<p>7 Який спосіб розташування елементів поруч можна було використовувати перед винайденням властивості float в CSS?</p>
+<ol>
+    <li>Grid</li>
+    <li>Flexbox</li>
+    <li style="color: green">Tables</li>
+    <li>Float</li>
+</ol>
+<hr>
+
+<p>8  Яким чином елемент з властивістю float впливає на блоки, які не мають властивості float?</p>
+<ol>
+    <li>Зміщує їх вниз</li>
+    <li>Зміщує їх вгору</li>
+    <li style="color: green">Поводяться так, ніби елемента з float немає</li>
+    <li>Зміщує їх вліво або вправо в залежності від значення float</li>
+</ol>
+<hr>
+
+<p>9 Як можна вирішити проблему, коли блоки не враховують float і розташовуються неочікувано?</p>
+<ol>
+    <li>Використовувати властивість position: relative;</li>
+    <li style="color: green">Додати clear до батьківського елемента з флоатами</li>
+    <li>Змінити значення float на протилежне</li>
+    <li>Додати display: inline-block; до блоків</li>
+</ol>
+<hr>
+<p>10 Як можна досягти контрасту між шрифтами на веб-сторінці, не використовуючи більше двох шрифтів?</p>
+<ol>
+    <li>Змінити кольори шрифтів</li>
+    <li>Змінити розміри шрифтів</li>
+    <li style="color: green">Використовувати шрифти різних сімейств та накреслень</li>
+    <li>Використовувати шрифти тільки одного сімейства</li>
+</ol>
+<hr>
+<h1 style="color: red">Flexbox. Flexbox layout.</h1>
+<p>1 Які властивості флекс-контейнера в CSS ви використовуєте для визначення напрямку осей і обгортання флекс-елементів?</p>
+<ol>
+    <li>flex-flow</li>
+    <li style="color: green">flex-direction та flex-wrap</li>
+    <li>flex-align та flex-justify</li>
+    <li>flex-container та flex-wrap</li>
+</ol>
+<hr>
+<p>2 Як в CSS визначається основний розмір та поперечний розмір флекс-елемента?</p>
+<ol>
+    <li style="color: green">main-size та cross-size</li>
+    <li>flex-main та flex-cross</li>
+    <li>size та cross</li>
+    <li>flex-basis та flex-shrink</li>
+</ol>
+<hr>
+<p>3 Що зображено на діаграмі, яка показана під описом властивостей флекс-контейнера?</p>
+<ol>
+    <li style="color: green"> Різні напрямки основної осі властивості flex-direction</li>
+    <li>Різні значення властивості flex-wrap</li>
+    <li>Різні значення властивості display</li>
+    <li>Різні напрямки поперечної осі властивості flex-direction</li>
+</ol>
+<hr>
+<p>4 Яке значення властивості flex-wrap призведе до того, що флекс-елементи можуть переноситися на новий ряд, якщо не вміщаються в одну лінію в рамках батька?</p>
+<ol>
+    <li>no-wrap</li>
+    <li style="color: green">wrap</li>
+    <li>wrap-reverse</li>
+    <li>flex-wrap</li>
+</ol>
+<hr>
+<p>5 Які можливі значення має властивість flex-wrap для флекс-контейнера?</p>
+<ol>
+    <li style="color: green">nowrap</li>
+    <li>wrap-reverse</li>
+    <li>space-between</li>
+    <li>center</li>
+</ol>
+<hr>
+<p>6  Що визначає властивість flex-flow?</p>
+<ol>
+    <li>Напрямок основної осі флекс-контейнера.</li>
+    <li style="color: green">Спосіб розміщення флекс-елементів усередині контейнера.</li>
+    <li>Кількість рядків та стовпців у флекс-контейнері.</li>
+    <li>Швидкість анімації переходу між режимами розташування елементів.</li>
+</ol>
+<hr>
+<p>7 Яке значення властивості justify-content дозволяє флекс-елементам розташовуватися по центру батька?</p>
+<ol>
+    <li>space-around</li>
+    <li style="color: green">center</li>
+    <li>start</li>
+    <li>space-evenly</li>
+</ol>
+<hr>
+<p>8 Какую роль в играет властивість order в контексті Flexbox?</p>
+<ol>
+    <li style="color: green">Змінює порядок відображення флекс-елементів усередині флекс-контейнера.</li>
+    <li>Визначає, наскільки флекс-елемент може рости при наявності вільного місця.</li>
+    <li>Розподіляє вільний простір по поперечній осі між рядами флекс-елементів.</li>
+    <li>Вирівнює один або кілька елементів інакше, ніж задано у батьківського елемента.</li>
+</ol>
+<hr>
+<p>9 Що визначає властивість flex-grow?</p>
+<ol>
+    <li>Розмір елемента до розподілу вільного місця.</li>
+    <li>Змінює порядок відображення флекс-елементів усередині флекс-контейнера.</li>
+    <li style="color: green">Визначає, наскільки флекс-елемент може рости при наявності вільного місця.</li>
+    <li>Вирівнює елементи вздовж поперечної осі.</li>
+</ol>
+<hr>
+<p>10 Що робить властивість flex-shrink в контексті Flexbox?</p>
+<ol>
+    <li>Змінює порядок відображення флекс-елементів усередині флекс-контейнера.</li>
+    <li>Визначає, наскільки флекс-елемент може рости при наявності вільного місця.</li>
+    <li>Властивість-шорткат для встановлення значень flex-grow, flex-shrink і flex-basis.</li>
+    <li style="color: green">Вказує, у яких пропорціях елемент буде зменшуватися, якщо не вистачає місця.</li>
+</ol>
+<hr>
 </body>
 </html>
